@@ -11,7 +11,7 @@ public class ApplicationMgr : MonoBehaviour
         m_globals = this.gameObject;
         GameObject.DontDestroyOnLoad(m_globals);
 
-        Application.targetFrameRate = 30;
+        //Application.targetFrameRate = 30;
     }
 
 }

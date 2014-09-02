@@ -40,7 +40,7 @@ public class CharacterMgr : MonoBehaviour
     public void SpawnRandomCharacter()
     {
         //-- 在一个随机的位置，生成一个对象
-        const float R = 200;
+        const float R = 500;
         Vector2 rand = Random.insideUnitCircle;
         Vector3 pos = new Vector3(rand.x*R, 0, rand.y*R);
 
