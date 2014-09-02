@@ -47,7 +47,7 @@ public class CharacterMgr : MonoBehaviour
         SpawnCharacter(pos);
     }
 
-    private void SpawnCharacter(Vector3 pos)
+    public void SpawnCharacter(Vector3 pos)
     {
         GameObject newChar = GameObject.Instantiate(m_charPrefab, pos, Quaternion.identity) as GameObject;
 

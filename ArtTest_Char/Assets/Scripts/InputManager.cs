@@ -4,50 +4,36 @@ using System.Collections;
 // 处理所有的用户输入操作
 public class InputManager : MonoBehaviour
 {
-    //-- 拖动操作控制变量
-    bool m_draging = false;
-    Vector3 m_lastDragPos;
+    Plane m_groundPlane;
 
     // Use this for initialization
     void Start()
     {
+        m_groundPlane = new Plane(Vector3.up, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 1 || Input.GetMouseButtonDown(1))
+        if (Input.touchCount > 0)
         {
-            CharacterMgr.Instance.SpawnRandomCharacter();
-        }
-        else
-        {
-            // 拖动操作 - 移动摄像机
-            dragMainCamera();
-        }
-    }
-
-    void dragMainCamera()
-    {
-        //-- 检测是否在拖动操作
-        if (Input.GetMouseButtonDown(0))
-        {
-            m_draging = true;
-            m_lastDragPos = Input.mousePosition;
-
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            m_draging = false;
-        }
-
-        //-- 根据拖动位移，来移动摄像机
-        if (m_draging)
-        {
-            Vector3 offset = Input.mousePosition - m_lastDragPos;
-            m_lastDragPos = Input.mousePosition;
-            Vector3 cameraPan = new Vector3(offset.x, 0, offset.y);
-            Camera.main.transform.Translate(cameraPan);
+            Touch tch = Input.touches[0];
+            if (Input.touchCount==1
+                && tch.phase == TouchPhase.Began)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(tch.position);
+                float rayDistance;
+                if (m_groundPlane.Raycast(ray, out rayDistance))
+                    CharacterMgr.Instance.SpawnCharacter(ray.GetPoint(rayDistance));
+            }
+            else if (Input.touchCount>=2
+                && tch.phase == TouchPhase.Moved)
+            {
+                Vector2 offset = tch.deltaPosition;
+                Vector3 cameraPan = new Vector3(offset.x, 0, offset.y);
+                Camera.main.transform.Translate(cameraPan);
+            }
         }
     }
+
 }
