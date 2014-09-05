@@ -22,7 +22,9 @@ public class CharacterCtroller : MonoBehaviour
         m_state = EState.Stand;
         m_stateDuration = 0;
         m_stateStartTime = Time.realtimeSinceStartup;
-        m_anim = GetComponent<Animation>();
+
+        Transform mesh = this.transform.FindChild("luxue_LOD1");
+        m_anim = mesh.gameObject.GetComponent<Animation>();
     }
 
     // Update is called once per frame
