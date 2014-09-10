@@ -28,16 +28,12 @@ public class UITitlePanel : MonoBehaviour
 
     void OnCharTestButtonClick(Object sender)
     {
-        Debug.Log("Loading Character Test Scene...");
-        Application.LoadLevel("CharTest");
-        this.gameObject.SetActive(false);
+        SceneMgr.Instance.LoadScene(SceneName.CharTest);
     }
 
     void OnSceneTestButtonClick(Object sender)
     {
-        Debug.Log("Loading Scene Test Scene...");
-        Application.LoadLevel("SceneTest");
-        this.gameObject.SetActive(false);
+        SceneMgr.Instance.LoadScene(SceneName.StaticMeshTest);
     }
 
 }

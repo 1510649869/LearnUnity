@@ -52,10 +52,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ApplicationMgr.cs" />
+    <Compile Include="Assets\Scripts\CharTest\CharTestScene.cs" />
     <Compile Include="Assets\Scripts\CharTest\CharacterCtroller.cs" />
     <Compile Include="Assets\Scripts\CharTest\CharacterMgr.cs" />
     <Compile Include="Assets\Scripts\CharTest\InputManager.cs" />
     <Compile Include="Assets\Scripts\Globals.cs" />
+    <Compile Include="Assets\Scripts\Scene.cs" />
+    <Compile Include="Assets\Scripts\SceneMgr.cs" />
+    <Compile Include="Assets\Scripts\StaticMeshTest\StaticMeshTestScene.cs" />
+    <Compile Include="Assets\Scripts\UIPanelManager.cs" />
+    <Compile Include="Assets\Scripts\UITestPanel.cs" />
     <Compile Include="Assets\Scripts\UITitlePanel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
